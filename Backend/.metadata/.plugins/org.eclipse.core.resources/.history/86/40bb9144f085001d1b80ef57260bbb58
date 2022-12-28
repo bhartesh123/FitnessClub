@@ -1,0 +1,5 @@
+package com.GymManagement.FitnessClub.EntityMongoDb;
+
+public class ClubMembers {
+
+}

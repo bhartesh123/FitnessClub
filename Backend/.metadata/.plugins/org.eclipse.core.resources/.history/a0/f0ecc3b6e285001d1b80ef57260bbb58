@@ -1,0 +1,13 @@
+package com.GymManagement.FitnessClub.MongoDB;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Coaches")
+public class ExpertCoaches {
+	@Id
+	private int id;
+	private String Name;
+	private String Email;
+	private String MobileNumber;
+}

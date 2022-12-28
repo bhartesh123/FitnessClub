@@ -1,0 +1,47 @@
+package com.GymManagement.FitnessClub.MongoDB;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Coaches")
+public class ExpertCoaches {
+	@Id
+	private int id;
+	private String C_Name;
+	private String C_Email;
+	private String C_MobileNumber;
+	public ExpertCoaches(int id, String c_Name, String c_Email, String c_MobileNumber) {
+		super();
+		this.id = id;
+		C_Name = c_Name;
+		C_Email = c_Email;
+		C_MobileNumber = c_MobileNumber;
+	}
+	public ExpertCoaches() {
+		super();
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getC_Name() {
+		return C_Name;
+	}
+	public void setC_Name(String c_Name) {
+		C_Name = c_Name;
+	}
+	public String getC_Email() {
+		return C_Email;
+	}
+	public void setC_Email(String c_Email) {
+		C_Email = c_Email;
+	}
+	public String getC_MobileNumber() {
+		return C_MobileNumber;
+	}
+	public void setC_MobileNumber(String c_MobileNumber) {
+		C_MobileNumber = c_MobileNumber;
+	}
+}

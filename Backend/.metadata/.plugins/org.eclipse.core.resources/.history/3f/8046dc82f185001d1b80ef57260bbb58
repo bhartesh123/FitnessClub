@@ -1,0 +1,17 @@
+package com.GymManagement.FitnessClub.EntityMongoDb;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Members")
+public class ClubMembers {
+	@Id
+	private long m_mobileNumber;
+	private long m_name;
+	private long m_emailId;
+	private long m_dateOfBirth;
+	private long m_height;
+	private long m_weight;
+	private long m_chestSize;
+	
+}

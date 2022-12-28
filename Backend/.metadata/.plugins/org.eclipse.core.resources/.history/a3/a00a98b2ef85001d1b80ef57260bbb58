@@ -1,0 +1,67 @@
+package com.GymManagement.FitnessClub.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.GymManagement.FitnessClub.MongoDB.ExpertCoaches;
+import com.GymManagement.FitnessClub.Repo.ExpertCoachesRepo;
+
+@RestController
+@CrossOrigin(origins = "*")
+@RequestMapping("/FitnessClub")
+public class GymController {
+	
+	@Autowired
+	private ExpertCoachesRepo coachesRepo;
+	
+	
+//	@GetMapping("/expertCoaches")
+//	private String getExpertCoaches() {
+//		String temp="";
+//		int count=(int) this.coachesRepo.count();
+//		//System.out.println("Count "+count);
+//		temp=Integer.toString(count);
+//		return temp;
+//	}
+	
+	@PostMapping("/addexpertCoaches")
+	private ResponseEntity<?> addExpertCoaches(@RequestBody ExpertCoaches coaches){
+		String c_mobile=Long.toString(coaches.getC_mobileNumber());
+		if(c_mobile.length()==10) {
+			ExpertCoaches save=this.coachesRepo.save(coaches);
+			return ResponseEntity.ok(save);
+		}
+		//ExpertCoaches save=this.coachesRepo.save(coaches);
+		return (ResponseEntity<?>) ResponseEntity.badRequest().body("Please provide the valid 10 digit Mobile number");
+	}
+	@GetMapping("/expertCoaches")
+	private ResponseEntity<?> getExpertCoaches(){
+		return ResponseEntity.ok(this.coachesRepo.count());
+	}
+	
+	@GetMapping("/members")
+	private String members() {
+		int temp=1100;
+		String members;
+		if(temp>1000) {
+			members="+"+"1000";
+			return members;
+		}
+		else {
+			members=Integer.toString(temp);
+			return members;
+		}
+	}
+	
+	@GetMapping("/fitnessPrograms")
+	private String fittnessPrograms() {
+		String fittnessPrograms="50";
+		return fittnessPrograms;
+	}
+}
